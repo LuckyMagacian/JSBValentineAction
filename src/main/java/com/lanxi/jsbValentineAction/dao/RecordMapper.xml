@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.lanxi.jsbValentineAction.dao.RecordDao">
+<insert id="addRecord" parameterType="com.lanxi.jsbValentineAction.entity.Record">
+insert into jsb_valentine_action_record 
+(phone,work_time,award_id,action_id,prize_level,order_id,remark,rebase)
+values
+(#{phone},#{workTime},#{awardId},#{actionId},#{prizeLevel},#{orderId},#{remark},#{rebase})
+</insert>
+<insert id="addRecordDefault" parameterType="com.lanxi.jsbValentineAction.entity.Record">
+insert into jsb_valentine_action_record 
+(phone,work_time,award_id,action_id,prize_level,order_id,remark,rebase)
+values
+(DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+</insert>
+<delete id="deleteRecord" parameterType="com.lanxi.jsbValentineAction.entity.Record">
+delete from jsb_valentine_action_record
+<where>
+<if test="phone != null"> and phone = #{phone}  </if>  
+<if test="workTime != null"> and work_time = #{workTime}  </if>  
+<if test="awardId != null"> and award_id = #{awardId}  </if>  
+<if test="actionId != null"> and action_id = #{actionId}  </if>  
+<if test="prizeLevel != null"> and prize_level = #{prizeLevel}  </if>  
+<if test="orderId != null"> and order_id = #{orderId}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</delete>
+<update id="updateRecord" parameterType="com.lanxi.jsbValentineAction.entity.Record">
+update jsb_valentine_action_record
+<set> 
+<if test="phone != null">phone = #{phone},</if>  
+<if test="workTime != null">work_time = #{workTime},</if>  
+<if test="awardId != null">award_id = #{awardId},</if>  
+<if test="actionId != null">action_id = #{actionId},</if>  
+<if test="prizeLevel != null">prize_level = #{prizeLevel},</if>  
+<if test="orderId != null">order_id = #{orderId},</if>  
+<if test="remark != null">remark = #{remark},</if>  
+<if test="rebase != null">rebase = #{rebase},</if>  
+</set>
+<where>
+<if test="phone != null"> and phone = #{phone}  </if>   
+</where>
+</update>
+<select id="selectRecord" resultMap="recordMap" parameterType="com.lanxi.jsbValentineAction.entity.Record" resultType="com.lanxi.jsbValentineAction.entity.Record">
+select
+phone,work_time,award_id,action_id,prize_level,order_id,remark,rebase
+from jsb_valentine_action_record
+<where> 
+<if test="phone != null"> and phone = #{phone}  </if>  
+<if test="workTime != null"> and work_time = #{workTime}  </if>  
+<if test="awardId != null"> and award_id = #{awardId}  </if>  
+<if test="actionId != null"> and action_id = #{actionId}  </if>  
+<if test="prizeLevel != null"> and prize_level = #{prizeLevel}  </if>  
+<if test="orderId != null"> and order_id = #{orderId}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</select>
+<resultMap id="recordMap" type="com.lanxi.jsbValentineAction.entity.Record">
+<result property="phone" 			column="phone"></result>
+<result property="workTime" 			column="work_time"></result>
+<result property="awardId" 			column="award_id"></result>
+<result property="actionId" 			column="action_id"></result>
+<result property="prizeLevel" 			column="prize_level"></result>
+<result property="orderId" 			column="order_id"></result>
+<result property="remark" 			column="remark"></result>
+<result property="rebase" 			column="rebase"></result>
+</resultMap>
+</mapper>

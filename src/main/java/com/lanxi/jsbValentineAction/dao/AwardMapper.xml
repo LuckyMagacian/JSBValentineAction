@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.lanxi.jsbValentineAction.dao.AwardDao">
+<insert id="addAward" parameterType="com.lanxi.jsbValentineAction.entity.Award">
+insert into jsb_valentine_action_award 
+(id,merchant_id,name,action_id,prize_level,price,count,status,remark,rebase)
+values
+(#{id},#{merchantId},#{name},#{actionId},#{prizeLevel},#{price},#{count},#{status},#{remark},#{rebase})
+</insert>
+<insert id="addAwardDefault" parameterType="com.lanxi.jsbValentineAction.entity.Award">
+insert into jsb_valentine_action_award 
+(id,merchant_id,name,action_id,prize_level,price,count,status,remark,rebase)
+values
+(DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+</insert>
+<delete id="deleteAward" parameterType="com.lanxi.jsbValentineAction.entity.Award">
+delete from jsb_valentine_action_award
+<where>
+<if test="id != null"> and id = #{id}  </if>  
+<if test="merchantId != null"> and merchant_id = #{merchantId}  </if>  
+<if test="name != null"> and name = #{name}  </if>  
+<if test="actionId != null"> and action_id = #{actionId}  </if>  
+<if test="prizeLevel != null"> and prize_level = #{prizeLevel}  </if>  
+<if test="price != null"> and price = #{price}  </if>  
+<if test="count != null"> and count = #{count}  </if>  
+<if test="status != null"> and status = #{status}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</delete>
+<update id="updateAward" parameterType="com.lanxi.jsbValentineAction.entity.Award">
+update jsb_valentine_action_award
+<set> 
+<if test="id != null">id = #{id},</if>  
+<if test="merchantId != null">merchant_id = #{merchantId},</if>  
+<if test="name != null">name = #{name},</if>  
+<if test="actionId != null">action_id = #{actionId},</if>  
+<if test="prizeLevel != null">prize_level = #{prizeLevel},</if>  
+<if test="price != null">price = #{price},</if>  
+<if test="count != null">count = #{count},</if>  
+<if test="status != null">status = #{status},</if>  
+<if test="remark != null">remark = #{remark},</if>  
+<if test="rebase != null">rebase = #{rebase},</if>  
+</set>
+<where>
+<if test="id != null"> and id = #{id}  </if>   
+</where>
+</update>
+<select id="selectAward" resultMap="awardMap" parameterType="com.lanxi.jsbValentineAction.entity.Award" resultType="com.lanxi.jsbValentineAction.entity.Award">
+select
+id,merchant_id,name,action_id,prize_level,price,count,status,remark,rebase
+from jsb_valentine_action_award
+<where> 
+<if test="id != null"> and id = #{id}  </if>  
+<if test="merchantId != null"> and merchant_id = #{merchantId}  </if>  
+<if test="name != null"> and name = #{name}  </if>  
+<if test="actionId != null"> and action_id = #{actionId}  </if>  
+<if test="prizeLevel != null"> and prize_level = #{prizeLevel}  </if>  
+<if test="price != null"> and price = #{price}  </if>  
+<if test="count != null"> and count = #{count}  </if>  
+<if test="status != null"> and status = #{status}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</select>
+<resultMap id="awardMap" type="com.lanxi.jsbValentineAction.entity.Award">
+<result property="id" 			column="id"></result>
+<result property="merchantId" 			column="merchant_id"></result>
+<result property="name" 			column="name"></result>
+<result property="actionId" 			column="action_id"></result>
+<result property="prizeLevel" 			column="prize_level"></result>
+<result property="price" 			column="price"></result>
+<result property="count" 			column="count"></result>
+<result property="status" 			column="status"></result>
+<result property="remark" 			column="remark"></result>
+<result property="rebase" 			column="rebase"></result>
+</resultMap>
+</mapper>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.lanxi.jsbValentineAction.dao.ActionControllerDao">
+<insert id="addActionController" parameterType="com.lanxi.jsbValentineAction.entity.ActionController">
+insert into jsb_valentine_action_action_controller 
+(id,money_amount,money_limit,mobile_special_amount,mobile_special_limit,mobile_first_amount,mobile_first_limit,mobile_second_amount,mobile_second_limit,unicom_special_amount,unicom_special_limit,unicom_first_amount,unicom_first_limit,unicom_second_amount,unicom_second_limit,telecom_special_amount,telecom_special_limit,telecom_first_amount,telecom_first_limit,telecom_second_amount,telecom_second_limit,remark,rebase)
+values
+(#{id},#{moneyAmount},#{moneyLimit},#{mobileSpecialAmount},#{mobileSpecialLimit},#{mobileFirstAmount},#{mobileFirstLimit},#{mobileSecondAmount},#{mobileSecondLimit},#{unicomSpecialAmount},#{unicomSpecialLimit},#{unicomFirstAmount},#{unicomFirstLimit},#{unicomSecondAmount},#{unicomSecondLimit},#{telecomSpecialAmount},#{telecomSpecialLimit},#{telecomFirstAmount},#{telecomFirstLimit},#{telecomSecondAmount},#{telecomSecondLimit},#{remark},#{rebase})
+</insert>
+<insert id="addActionControllerDefault" parameterType="com.lanxi.jsbValentineAction.entity.ActionController">
+insert into jsb_valentine_action_action_controller 
+(id,money_amount,money_limit,mobile_special_amount,mobile_special_limit,mobile_first_amount,mobile_first_limit,mobile_second_amount,mobile_second_limit,unicom_special_amount,unicom_special_limit,unicom_first_amount,unicom_first_limit,unicom_second_amount,unicom_second_limit,telecom_special_amount,telecom_special_limit,telecom_first_amount,telecom_first_limit,telecom_second_amount,telecom_second_limit,remark,rebase)
+values
+(DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+</insert>
+<delete id="deleteActionController" parameterType="com.lanxi.jsbValentineAction.entity.ActionController">
+delete from jsb_valentine_action_action_controller
+<where>
+<if test="id != null"> and id = #{id}  </if>  
+<if test="moneyAmount != null"> and money_amount = #{moneyAmount}  </if>  
+<if test="moneyLimit != null"> and money_limit = #{moneyLimit}  </if>  
+<if test="mobileSpecialAmount != null"> and mobile_special_amount = #{mobileSpecialAmount}  </if>  
+<if test="mobileSpecialLimit != null"> and mobile_special_limit = #{mobileSpecialLimit}  </if>  
+<if test="mobileFirstAmount != null"> and mobile_first_amount = #{mobileFirstAmount}  </if>  
+<if test="mobileFirstLimit != null"> and mobile_first_limit = #{mobileFirstLimit}  </if>  
+<if test="mobileSecondAmount != null"> and mobile_second_amount = #{mobileSecondAmount}  </if>  
+<if test="mobileSecondLimit != null"> and mobile_second_limit = #{mobileSecondLimit}  </if>  
+<if test="unicomSpecialAmount != null"> and unicom_special_amount = #{unicomSpecialAmount}  </if>  
+<if test="unicomSpecialLimit != null"> and unicom_special_limit = #{unicomSpecialLimit}  </if>  
+<if test="unicomFirstAmount != null"> and unicom_first_amount = #{unicomFirstAmount}  </if>  
+<if test="unicomFirstLimit != null"> and unicom_first_limit = #{unicomFirstLimit}  </if>  
+<if test="unicomSecondAmount != null"> and unicom_second_amount = #{unicomSecondAmount}  </if>  
+<if test="unicomSecondLimit != null"> and unicom_second_limit = #{unicomSecondLimit}  </if>  
+<if test="telecomSpecialAmount != null"> and telecom_special_amount = #{telecomSpecialAmount}  </if>  
+<if test="telecomSpecialLimit != null"> and telecom_special_limit = #{telecomSpecialLimit}  </if>  
+<if test="telecomFirstAmount != null"> and telecom_first_amount = #{telecomFirstAmount}  </if>  
+<if test="telecomFirstLimit != null"> and telecom_first_limit = #{telecomFirstLimit}  </if>  
+<if test="telecomSecondAmount != null"> and telecom_second_amount = #{telecomSecondAmount}  </if>  
+<if test="telecomSecondLimit != null"> and telecom_second_limit = #{telecomSecondLimit}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</delete>
+<update id="updateActionController" parameterType="com.lanxi.jsbValentineAction.entity.ActionController">
+update jsb_valentine_action_action_controller
+<set> 
+<if test="id != null">id = #{id},</if>  
+<if test="moneyAmount != null">money_amount = #{moneyAmount},</if>  
+<if test="moneyLimit != null">money_limit = #{moneyLimit},</if>  
+<if test="mobileSpecialAmount != null">mobile_special_amount = #{mobileSpecialAmount},</if>  
+<if test="mobileSpecialLimit != null">mobile_special_limit = #{mobileSpecialLimit},</if>  
+<if test="mobileFirstAmount != null">mobile_first_amount = #{mobileFirstAmount},</if>  
+<if test="mobileFirstLimit != null">mobile_first_limit = #{mobileFirstLimit},</if>  
+<if test="mobileSecondAmount != null">mobile_second_amount = #{mobileSecondAmount},</if>  
+<if test="mobileSecondLimit != null">mobile_second_limit = #{mobileSecondLimit},</if>  
+<if test="unicomSpecialAmount != null">unicom_special_amount = #{unicomSpecialAmount},</if>  
+<if test="unicomSpecialLimit != null">unicom_special_limit = #{unicomSpecialLimit},</if>  
+<if test="unicomFirstAmount != null">unicom_first_amount = #{unicomFirstAmount},</if>  
+<if test="unicomFirstLimit != null">unicom_first_limit = #{unicomFirstLimit},</if>  
+<if test="unicomSecondAmount != null">unicom_second_amount = #{unicomSecondAmount},</if>  
+<if test="unicomSecondLimit != null">unicom_second_limit = #{unicomSecondLimit},</if>  
+<if test="telecomSpecialAmount != null">telecom_special_amount = #{telecomSpecialAmount},</if>  
+<if test="telecomSpecialLimit != null">telecom_special_limit = #{telecomSpecialLimit},</if>  
+<if test="telecomFirstAmount != null">telecom_first_amount = #{telecomFirstAmount},</if>  
+<if test="telecomFirstLimit != null">telecom_first_limit = #{telecomFirstLimit},</if>  
+<if test="telecomSecondAmount != null">telecom_second_amount = #{telecomSecondAmount},</if>  
+<if test="telecomSecondLimit != null">telecom_second_limit = #{telecomSecondLimit},</if>  
+<if test="remark != null">remark = #{remark},</if>  
+<if test="rebase != null">rebase = #{rebase},</if>  
+</set>
+<where>
+<if test="id != null"> and id = #{id}  </if>  
+</where>
+</update>
+<select id="selectActionController" resultMap="actionControllerMap" parameterType="com.lanxi.jsbValentineAction.entity.ActionController" resultType="com.lanxi.jsbValentineAction.entity.ActionController">
+select
+id,money_amount,money_limit,mobile_special_amount,mobile_special_limit,mobile_first_amount,mobile_first_limit,mobile_second_amount,mobile_second_limit,unicom_special_amount,unicom_special_limit,unicom_first_amount,unicom_first_limit,unicom_second_amount,unicom_second_limit,telecom_special_amount,telecom_special_limit,telecom_first_amount,telecom_first_limit,telecom_second_amount,telecom_second_limit,remark,rebase
+from jsb_valentine_action_action_controller
+<where> 
+<if test="id != null"> and id = #{id}  </if>  
+<if test="moneyAmount != null"> and money_amount = #{moneyAmount}  </if>  
+<if test="moneyLimit != null"> and money_limit = #{moneyLimit}  </if>  
+<if test="mobileSpecialAmount != null"> and mobile_special_amount = #{mobileSpecialAmount}  </if>  
+<if test="mobileSpecialLimit != null"> and mobile_special_limit = #{mobileSpecialLimit}  </if>  
+<if test="mobileFirstAmount != null"> and mobile_first_amount = #{mobileFirstAmount}  </if>  
+<if test="mobileFirstLimit != null"> and mobile_first_limit = #{mobileFirstLimit}  </if>  
+<if test="mobileSecondAmount != null"> and mobile_second_amount = #{mobileSecondAmount}  </if>  
+<if test="mobileSecondLimit != null"> and mobile_second_limit = #{mobileSecondLimit}  </if>  
+<if test="unicomSpecialAmount != null"> and unicom_special_amount = #{unicomSpecialAmount}  </if>  
+<if test="unicomSpecialLimit != null"> and unicom_special_limit = #{unicomSpecialLimit}  </if>  
+<if test="unicomFirstAmount != null"> and unicom_first_amount = #{unicomFirstAmount}  </if>  
+<if test="unicomFirstLimit != null"> and unicom_first_limit = #{unicomFirstLimit}  </if>  
+<if test="unicomSecondAmount != null"> and unicom_second_amount = #{unicomSecondAmount}  </if>  
+<if test="unicomSecondLimit != null"> and unicom_second_limit = #{unicomSecondLimit}  </if>  
+<if test="telecomSpecialAmount != null"> and telecom_special_amount = #{telecomSpecialAmount}  </if>  
+<if test="telecomSpecialLimit != null"> and telecom_special_limit = #{telecomSpecialLimit}  </if>  
+<if test="telecomFirstAmount != null"> and telecom_first_amount = #{telecomFirstAmount}  </if>  
+<if test="telecomFirstLimit != null"> and telecom_first_limit = #{telecomFirstLimit}  </if>  
+<if test="telecomSecondAmount != null"> and telecom_second_amount = #{telecomSecondAmount}  </if>  
+<if test="telecomSecondLimit != null"> and telecom_second_limit = #{telecomSecondLimit}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</select>
+<resultMap id="actionControllerMap" type="com.lanxi.jsbValentineAction.entity.ActionController">
+<result property="id" 			column="id"></result>
+<result property="moneyAmount" 			column="money_amount"></result>
+<result property="moneyLimit" 			column="money_limit"></result>
+<result property="mobileSpecialAmount" 			column="mobile_special_amount"></result>
+<result property="mobileSpecialLimit" 			column="mobile_special_limit"></result>
+<result property="mobileFirstAmount" 			column="mobile_first_amount"></result>
+<result property="mobileFirstLimit" 			column="mobile_first_limit"></result>
+<result property="mobileSecondAmount" 			column="mobile_second_amount"></result>
+<result property="mobileSecondLimit" 			column="mobile_second_limit"></result>
+<result property="unicomSpecialAmount" 			column="unicom_special_amount"></result>
+<result property="unicomSpecialLimit" 			column="unicom_special_limit"></result>
+<result property="unicomFirstAmount" 			column="unicom_first_amount"></result>
+<result property="unicomFirstLimit" 			column="unicom_first_limit"></result>
+<result property="unicomSecondAmount" 			column="unicom_second_amount"></result>
+<result property="unicomSecondLimit" 			column="unicom_second_limit"></result>
+<result property="telecomSpecialAmount" 			column="telecom_special_amount"></result>
+<result property="telecomSpecialLimit" 			column="telecom_special_limit"></result>
+<result property="telecomFirstAmount" 			column="telecom_first_amount"></result>
+<result property="telecomFirstLimit" 			column="telecom_first_limit"></result>
+<result property="telecomSecondAmount" 			column="telecom_second_amount"></result>
+<result property="telecomSecondLimit" 			column="telecom_second_limit"></result>
+<result property="remark" 			column="remark"></result>
+<result property="rebase" 			column="rebase"></result>
+</resultMap>
+</mapper>

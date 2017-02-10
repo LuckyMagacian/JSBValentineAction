@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+<mapper namespace="com.lanxi.jsbValentineAction.dao.ActionDao">
+<insert id="addAction" parameterType="com.lanxi.jsbValentineAction.entity.Action">
+insert into jsb_valentine_action_action 
+(id,name,special_prize,first_prize,second_prize,no_prize,remark,rebase)
+values
+(#{id},#{name},#{specialPrize},#{firstPrize},#{secondPrize},#{noPrize},#{remark},#{rebase})
+</insert>
+<insert id="addActionDefault" parameterType="com.lanxi.jsbValentineAction.entity.Action">
+insert into jsb_valentine_action_action 
+(id,name,special_prize,first_prize,second_prize,no_prize,remark,rebase)
+values
+(DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT,DEFAULT)
+</insert>
+<delete id="deleteAction" parameterType="com.lanxi.jsbValentineAction.entity.Action">
+delete from jsb_valentine_action_action
+<where>
+<if test="id != null"> and id = #{id}  </if>  
+<if test="name != null"> and name = #{name}  </if>  
+<if test="specialPrize != null"> and special_prize = #{specialPrize}  </if>  
+<if test="firstPrize != null"> and first_prize = #{firstPrize}  </if>  
+<if test="secondPrize != null"> and second_prize = #{secondPrize}  </if>  
+<if test="noPrize != null"> and no_prize = #{noPrize}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</delete>
+<update id="updateAction" parameterType="com.lanxi.jsbValentineAction.entity.Action">
+update jsb_valentine_action_action
+<set> 
+<if test="id != null">id = #{id},</if>  
+<if test="name != null">name = #{name},</if>  
+<if test="specialPrize != null">special_prize = #{specialPrize},</if>  
+<if test="firstPrize != null">first_prize = #{firstPrize},</if>  
+<if test="secondPrize != null">second_prize = #{secondPrize},</if>  
+<if test="noPrize != null">no_prize = #{noPrize},</if>  
+<if test="remark != null">remark = #{remark},</if>  
+<if test="rebase != null">rebase = #{rebase},</if>  
+</set>
+<where>
+<if test="id != null"> and id = #{id}  </if>  
+</where>
+</update>
+<select id="selectAction" resultMap="actionMap" parameterType="com.lanxi.jsbValentineAction.entity.Action" resultType="com.lanxi.jsbValentineAction.entity.Action">
+select
+id,name,special_prize,first_prize,second_prize,no_prize,remark,rebase
+from jsb_valentine_action_action
+<where> 
+<if test="id != null"> and id = #{id}  </if>  
+<if test="name != null"> and name = #{name}  </if>  
+<if test="specialPrize != null"> and special_prize = #{specialPrize}  </if>  
+<if test="firstPrize != null"> and first_prize = #{firstPrize}  </if>  
+<if test="secondPrize != null"> and second_prize = #{secondPrize}  </if>  
+<if test="noPrize != null"> and no_prize = #{noPrize}  </if>  
+<if test="remark != null"> and remark = #{remark}  </if>  
+<if test="rebase != null"> and rebase = #{rebase}  </if>  
+</where>
+</select>
+<resultMap id="actionMap" type="com.lanxi.jsbValentineAction.entity.Action">
+<result property="id" 			column="id"></result>
+<result property="name" 			column="name"></result>
+<result property="specialPrize" 			column="special_prize"></result>
+<result property="firstPrize" 			column="first_prize"></result>
+<result property="secondPrize" 			column="second_prize"></result>
+<result property="noPrize" 			column="no_prize"></result>
+<result property="remark" 			column="remark"></result>
+<result property="rebase" 			column="rebase"></result>
+</resultMap>
+</mapper>
