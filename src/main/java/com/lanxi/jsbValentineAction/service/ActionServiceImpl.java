@@ -1,7 +1,11 @@
 package com.lanxi.jsbValentineAction.service;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.Timer;
 
 import org.apache.log4j.Logger;
 import org.dom4j.Document;
@@ -30,10 +34,11 @@ import com.lanxi.jsbValentineAction.util.TimeUtil;
 public class ActionServiceImpl implements ActionService {
 	private static Logger logger=Logger.getLogger(ActionServiceImpl.class);
 	public static volatile ActionController controller;
+	private Counter counter;
 	@Autowired
 	DaoService dao;
 	public ActionServiceImpl() {
-		
+		counter=new Counter();
 	}
 	
 	public void init(){
@@ -299,7 +304,9 @@ public class ActionServiceImpl implements ActionService {
 			if(award==null||phone==null)
 				return null;
 			ReqHead head=new ReqHead();
-			head.setMsgId(TimeUtil.getDate().substring(4)+RandomUtil.getRandomNumber(4));
+			synchronized (counter) {
+				head.setMsgId(TimeUtil.getDate().substring(4)+counter.getCount());
+			}
 			head.setReserve("");
 			ReqMsg  reqMsg=new ReqMsg();
 			reqMsg.setPhone(phone);
@@ -339,6 +346,13 @@ public class ActionServiceImpl implements ActionService {
 		return order;
 	}
 	
+	/**
+	 * 重置订单计数器
+	 */
+	public void counterInit() {
+		counter.init();
+	}
+	
 	@Override
 	public boolean hasLess(ActionController controller) {
 		logger.info("活动预算判定!");
@@ -348,5 +362,34 @@ public class ActionServiceImpl implements ActionService {
 		else
 			logger.info("活动预算已满!"+controller);
 		return result;
+	}
+
+	public static class Counter{
+		private Integer count;
+		private Timer timer;
+		String  lastDate =TimeUtil.getDate();
+		public Counter() {
+			logger.info("生成计数器!初始值:"+1000);
+			count=1000;
+			timer=new Timer(60*60*1000, new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if(!lastDate.equals(TimeUtil.getDate()))
+						init();
+					lastDate=TimeUtil.getDate();
+					logger.info("更新日期!"+lastDate);
+				}
+			});
+//			timer.start();
+//			logger.info("计数器启动!");
+		}
+		public void init(){
+			logger.info("计数器重置为初始值1000");
+			count=1000;
+		}
+		public Integer getCount(){
+			logger.info("计数器被调用,计数累加!"+count);
+			return count++;
+		}
 	}
 }

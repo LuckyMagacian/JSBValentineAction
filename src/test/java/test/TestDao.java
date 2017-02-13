@@ -116,7 +116,7 @@ public class TestDao {
 			}
 		};
 		
-		Thread[] threads=new Thread[500];
+		Thread[] threads=new Thread[20];
 		int i=0;
 		for(Thread each:threads){
 			each=new Thread(task);

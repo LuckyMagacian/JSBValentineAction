@@ -8,7 +8,7 @@
   	<!-- log4j初始化Servlet -->
   	<servlet>
   		<servlet-name>log4j</servlet-name>
-  		<servlet-class>com.lanxi.JSBValentineAction.servlet.Log4jInitServlet</servlet-class>
+  		<servlet-class>com.lanxi.jsbValentineAction.servlet.Log4jInitServlet</servlet-class>
   		<!-- 配置文件相对项目路径的位置 -->
   		<init-param>
   			<param-name>location</param-name>

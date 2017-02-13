@@ -57,4 +57,25 @@
 	<bean id="mappers" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.lanxi.jsbValentineAction.dao"></property>
 	</bean>
+	
+	<bean id="tasks"   lazy-init="false" autowire="no" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="countInitTask"></ref>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="countInitTask"  class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="countInitJob"/> 
+		<property name="cronExpression">
+			<value>0 0 0 * * ?</value><!-- 0点执行一次触发 -->
+		</property>
+	</bean>
+	<bean id="countInitJob" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="actionService"></property>
+		<property name="targetMethod">
+			<value>counterInit</value>
+		</property>
+	</bean>
 </beans>
