@@ -1,0 +1,11 @@
+#content{
+	background: url(../img/packet.jpg) no-repeat;
+	background-size:cover ;
+}
+#click{
+    height: 200px;
+    width: 200px;
+    margin: auto;
+    position: relative;
+    top: 25%;
+}
