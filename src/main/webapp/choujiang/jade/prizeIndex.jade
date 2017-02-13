@@ -1,0 +1,22 @@
+extends template
+block CSS
+  title 江苏银行情人节活动页
+  link(rel="stylesheet" href="css/public.css")
+  link(rel="stylesheet" href="css/prizeIndex.css")
+block content
+  #content
+    #click
+    #info
+      p.infoTitle 活动说明:
+      p 1、流量充值手机号为直销银行注册手机号码，每用户仅限参与一次。
+      p 2、流量红包总计50000份，最高1G，采用拼手气拆流量红包，100%中奖，送完为止。
+      p 3、流量红包为三网全国流量（不含港澳台），当月有效，过期自动失效。（非移动、联通、电信的号码无法参与本次活动）
+      p 4、如因用户手机套餐与本流量包冲突或因运营商限制无法正常充值则视为放弃。
+      p 5、获得流量将在24小时内充值到账，月末2天暂停充值，将于次月2日进行补充。
+      p 6、流量包的使用优先级别以当地运营商规则为准。
+      p 7、本活动最终解释权归江苏银行所有。
+    //-footer.weui-footer.weui-footer_fixed-bottom
+      span.weui-footer__text Copyright &copy; 2015-2017 #{allTitle}
+block JS
+  script(src="js/public.js")
+  script(src="js/prizeIndex.js")

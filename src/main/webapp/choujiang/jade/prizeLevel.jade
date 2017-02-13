@@ -1,0 +1,24 @@
+extends template
+block CSS
+  title 江苏银行情人节活动页
+  link(rel="stylesheet" href="css/public.css")
+  link(rel="stylesheet" href="css/prizeLevel.css")
+block content
+  #content
+    #info
+      p.infoTitle 活动说明:
+      p
+        span 1、一等奖:移动1G/联通500M/电信1G流量包；
+        br
+        span(style="padding-left: 22px;") 二等奖:移动70M/联通100M/电信100M流量包；
+        br
+        span(style="padding-left: 22px;") 三等奖:移动10M/联通50M/电信10M流量包。
+      p 2、流量红包为三网全国流量（不含港澳台），当月有效，过期自动失效。（非移动、联通、电信的虚拟运营商号码无法参与本次活动）
+      p 3、如因用户手机套餐与本流量包冲突或因运营商限制无法正常充值则视为放弃。
+      p 4、获得流量将在24小时内充值到账，月末2天暂停充值，将于次月2日进行补充。
+      p 5、流量包的使用优先级别以当地运营商规则为准。
+      p 6、本活动最终解释权归江苏银行所有。
+    //-footer.weui-footer.weui-footer_fixed-bottom
+      span.weui-footer__text Copyright &copy; 2015-2017 #{allTitle}
+block JS
+  script(src="js/public.js")
